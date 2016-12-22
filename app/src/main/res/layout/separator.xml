@@ -1,0 +1,33 @@
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:layout_width = "match_parent"
+    android:layout_height = "wrap_content"
+    android:weightSum="1"
+    android:background = "@color/bg_order"
+    android:gravity = "center"
+    android:orientation = "horizontal">
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height = "0.3dp"
+        android:background = "#000"
+        android:layout_weight="0.3"/>
+
+    <TextView
+        android:id = "@+id/tv"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_gravity = "center"
+        android:layout_marginLeft = "8dp"
+        android:layout_marginRight = "8dp"
+        android:gravity = "center"
+        android:text = "sau"
+        android:textSize = "14sp"
+        />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height = "0.3dp"
+        android:background = "#000"
+        android:layout_weight="0.3"/>
+</LinearLayout>

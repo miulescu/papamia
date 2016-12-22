@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_row_selector"
+
+    android:weightSum="5"
+    android:orientation="vertical">
+
+
+    <com.android.volley.toolbox.NetworkImageView
+
+        android:layout_weight="3"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/imageItemView"
+        android:scaleType="centerCrop"
+
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+       >
+
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="8dp"
+            android:paddingTop="8dp"
+            android:paddingLeft="16dp"
+
+            android:textSize="16dp"
+           />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/descriptiontextView"
+
+            android:paddingTop="2dp"
+            android:paddingLeft="16dp"
+            android:layout_below="@id/nameView"
+            android:textSize="12dp"
+            android:textColor="#888888"
+            />
+
+
+    <RelativeLayout
+        android:id="@+id/basicPriceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_below="@id/descriptiontextView"
+        android:padding="16dp"
+
+       >
+        <TextView
+            android:text="Pret de Baza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rontextView"
+            android:layout_alignParentLeft="true"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:paddingLeft="1dp"
+
+ />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:id="@+id/pricetextView"
+          android:layout_alignParentRight="true"
+            android:textStyle="bold"
+            />
+
+    </RelativeLayout>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.2dp"
+        android:background="@android:color/darker_gray"/>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.MainActivity"
+        tools:ignore="MergeRootFrame"
+        android:background="@color/list_row_start_color"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radiogrouplayout"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Va rugam selectati"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radiogroup"
+
+
+                />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/preturi_portii"
+                    android:orientation="vertical"
+                    android:layout_marginRight="24dp"
+                    android:layout_alignParentRight="true">
+                </LinearLayout>
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.2dp"
+            android:background="@android:color/darker_gray"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+    <TextView
+        android:text="Cantitate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textSize="16dp"
+        android:padding="16dp"
+        />
+    <!-- rounded corners -->
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:layout_centerInParent="true"
+        android:padding="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:layout_marginTop="-2dp"
+            android:layout_marginBottom="-2dp"
+            >
+
+            <ImageButton
+                android:id="@+id/buttonADD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_action_add"
+
+                android:src="@drawable/ic_action_add"
+                android:elevation="4dp"
+                android:layout_alignParentLeft="true"
+                android:onClick="incrementItemsQty"/>
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:paddingTop="2dp"
+                android:id="@+id/textQTY"
+                />
+            <ImageButton
+                android:id="@+id/buttonREMOVE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_action_remove"
+
+                android:src="@drawable/ic_action_remove"
+                android:elevation="4dp"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:layout_alignParentLeft="true"
+            android:text="Total"
+            android:textStyle="bold"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/textSumaTotala"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 RON"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:textSize="16dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/linearLayoutComanda"
+        android:background="@drawable/button_comanda"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:padding="8dp"
+
+
+      >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Comanda"
+                android:textColor="#ffffff"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:padding="2dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
+    </ScrollView>

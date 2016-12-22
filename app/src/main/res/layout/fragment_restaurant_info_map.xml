@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_order"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        >
+        <TextView
+            android:id="@+id/text_deschis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+            android:paddingTop="10dip"
+            android:text="DESCHIS"
+            android:textStyle="bold"
+            android:paddingLeft="12dp"
+            android:textSize="14dp"
+            />
+        <TextView
+            android:id="@+id/info_deschis"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_deschis"
+            android:layout_marginTop="3dip"
+            android:textSize="@dimen/rating"
+            android:text="luni - vineri"
+            android:paddingLeft="12dp"
+            android:paddingBottom="8dp"/>
+        <TextView
+            android:id="@+id/info_orar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/rating"
+            android:text="10:00 - 17:00"
+            android:layout_alignTop="@+id/info_deschis"
+
+            android:paddingRight="12dp"
+            android:paddingBottom="8dp"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.CategoriiActivity" >
+
+        <fragment
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.google.android.gms.maps.SupportMapFragment" />
+
+    </RelativeLayout>
+</LinearLayout>

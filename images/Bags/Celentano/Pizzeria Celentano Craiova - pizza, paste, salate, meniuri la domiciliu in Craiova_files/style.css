@@ -1,0 +1,116 @@
+	
+BODY { font-family:Verdana; font-size: 12px; color:#3e3e3e; padding: 0px; margin: 0px; background: #ae0a00; }
+
+TD { font-family:Verdana; font-size: 12px; color: #3e3e3e;  }
+
+.title
+	{ font-family:Verdana; font-size:17px; color:#ffffff; font-weight:bold; }		
+
+.nume 
+	{ font-family:"Trebuchet MS"; font-size:16px; font-weight:bold; color:#ae0a00; }
+.gramaj 
+	{ font-style:italic; }
+.pret 
+	{ font-family:"Trebuchet MS"; font-size:16px; font-weight:bold; color:#ae0a00; }		
+.tel
+	{ font-family:"Trebuchet MS"; font-size:16px; font-weight:bold; }	
+.red
+	{ color:#ae0a00; }	
+
+.underpage 
+	{ color:#ffffff; font-size:11px; } 
+.obs 
+	{ color:#f77a0b; font-weight:bold; }
+.white
+	{ color:#FFFFFF; }	
+.promo
+	{ color:#FFFFFF; font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold; }	
+.promo_mic{ color:#FFFFFF; font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:bold; }	
+.promo_2
+	{ color:#FFFFFF; font-size:12px; font-weight:bold; }	
+
+table.box 
+	{ border: 1px solid #eee4a4; }		
+table.box td
+	{ height:21px; padding:0px 5px; }	
+
+A:active 
+	{ font-size:13px; COLOR:#ffffff; TEXT-DECORATION:underline; outline:none; }
+A:link 
+	{ font-size:13px; COLOR:#ffffff; TEXT-DECORATION:none; outline:none; }
+A:visited 
+	{ font-size:13px; COLOR:#ffffff; TEXT-DECORATION:none; outline:none; }
+A:hover 
+	{ font-size:13px; COLOR:#ffffff; TEXT-DECORATION:underline; outline:none; }	
+
+A.header:active 
+	{ font-family:"Myriad Pro"; font-size:14px; font-weight:bold; COLOR:#ffffff; TEXT-DECORATION:none; outline:none; }
+A.header:link 
+	{ font-family:"Myriad Pro"; font-size:14px; font-weight:bold; COLOR:#ffffff; TEXT-DECORATION:none; outline:none; }
+A.header:visited 
+	{ font-family:"Myriad Pro"; font-size:14px; font-weight:bold; COLOR:#ffffff; TEXT-DECORATION:none; outline:none; }
+A.header:hover 
+	{ font-family:"Myriad Pro"; font-size:14px; font-weight:bold; COLOR:#ffffff; TEXT-DECORATION:none; outline:none; }		
+.header 
+	{ font-family:"Myriad Pro"; font-size:14px; font-weight:bold; COLOR:#ffffff; }
+
+A.link:active 
+	{ font-size:13px; COLOR:#ae0a00; TEXT-DECORATION:underline; outline:none; }
+A.link:link 
+	{ font-size:13px; COLOR:#ae0a00; TEXT-DECORATION:none; outline:none; }
+A.link:visited 
+	{ font-size:13px; COLOR:#ae0a00; TEXT-DECORATION:none; outline:none; }
+A.link:hover 
+	{ font-size:13px; COLOR:#ae0a00; TEXT-DECORATION:underline; outline:none; }
+	
+A.link2:active 
+	{ font-size:13px; COLOR:#5b241f; TEXT-DECORATION:underline; outline:none; }
+A.link2:link 
+	{ font-size:13px; COLOR:#5b241f; TEXT-DECORATION:none; outline:none; }
+A.link2:visited 
+	{ font-size:13px; COLOR:#5b241f; TEXT-DECORATION:none; outline:none; }
+A.link2:hover 
+	{ font-size:13px; COLOR:#5b241f; TEXT-DECORATION:underline; outline:none; }	
+	
+A.meniu:active 
+	{ font-size:13px; color:#5b241f; font-weight:bold; TEXT-DECORATION:underline; outline:none; }
+A.meniu:link 
+	{ font-size:13px; color:#5b241f; font-weight:bold; TEXT-DECORATION:none; outline:none; }
+A.meniu:visited 
+	{ font-size:13px; color:#5b241f; font-weight:bold; TEXT-DECORATION:none; outline:none; }
+A.meniu:hover 
+	{ font-size:13px; color:#5b241f; font-weight:bold; TEXT-DECORATION:underline; outline:none; }	
+	
+A.footer:active 
+	{ font-size:11px; COLOR:#ffffff; TEXT-DECORATION:underline; outline:none; }
+A.footer:link 
+	{ font-size:11px; COLOR:#eee4a4; TEXT-DECORATION:none; outline:none; }
+A.footer:visited 
+	{ font-size:11px; COLOR:#eee4a4; TEXT-DECORATION:none; outline:none; }
+A.footer:hover 
+	{ font-size:11px; COLOR:#ffffff; TEXT-DECORATION:underline; outline:none; }		
+.footer 
+	{ font-size:11px; COLOR:#eee4a4; }
+
+
+form { display:inline; }
+
+input,select,option {
+		font-family: Arial;
+		border: 1px solid #c9c9c9;
+		font-size:13px;
+}
+textarea {
+		font-family: Arial;
+		border: 1px solid #c9c9c9;
+		font-size:13px;
+	}
+input.contact {
+		font-family: Arial;
+		font-size:13px;
+		color:#FFFFFF;
+		background-color:#ae0a00;
+}	
+	
+div.pic 
+	{ padding:4px; margin:0px; border:2px solid #f8f8f8; text-align:center; }

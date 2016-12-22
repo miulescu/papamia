@@ -1,0 +1,37 @@
+.stepcarousel{
+position: relative; 
+border: 0;
+overflow: scroll; 
+width: 257px; 
+height: 171px;
+}
+
+.stepcarousel .belt{
+position: absolute; 
+margin-top: 0px;
+left: 0;
+top: 0;
+}
+
+.stepcarousel .panel{
+float: left;
+overflow: hidden; 
+margin:0px; 
+width:257px;
+}
+
+
+
+.stepcarousel .belt_cafe{
+position: absolute; 
+margin-top: 0px;
+left: 0;
+top: 0;
+}
+
+.stepcarousel .panel_cafe{
+float: left;
+overflow: hidden; 
+margin:0px; 
+width:257px;
+}

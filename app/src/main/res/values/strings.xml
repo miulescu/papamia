@@ -1,0 +1,38 @@
+<resources>
+        <string name="app_name">PapaMia</string>
+        <string name="action_settings">Settings</string>
+        <string name="action_refresh" translatable="false">Refresh</string>
+        <string name="action_map">Map Location</string>
+        <string name="pref_location_label">Location</string>
+
+        <string name="pref_location_key">Location</string>
+        <string name="pref_location_default">94043</string>
+        <string name="pref_units_label_metric">Metric</string>
+        <string name="pref_units_label_imperial">Imperial</string>
+
+        <string name="leave_restaurant">Leave Restaurant?</string>
+
+        <string name="preference_file_key">"ro.softronic.mihai.ro.papamia.PREFERENCE_FILE_KEY"</string>
+
+        <string-array name="orase_array">
+                <item>Craiova</item>
+                <item>Slatina</item>
+        </string-array>
+        <string-array name="filter_array">
+                <item>Pizza</item>
+                <item>Pasta</item>
+        </string-array>
+        <string-array name="sortare_array">
+                <item>--------------</item>
+                <item>Alfabetic</item>
+                <item>Rating</item>
+                <item>Timp de livrare</item>
+                <item>Discount</item>
+
+        </string-array>
+        <string name="drawer_open">Open navigation drawer</string>
+        <string name="drawer_close">Close navigation drawer</string>
+        <string name="facebook_application_id" translatable="false" >371326573201238</string>
+
+
+</resources>

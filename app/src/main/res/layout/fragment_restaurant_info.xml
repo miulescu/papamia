@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_order"
+        android:padding="8dp" >
+
+        <!-- Restaurant Image -->
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/restaurant_image"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+            android:paddingTop="10dip"
+            android:paddingBottom="10dip"/>
+
+
+        <!-- Restaurant Nume -->
+        <TextView
+            android:id="@+id/restaurant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/restaurant_image"
+            android:layout_toRightOf="@+id/restaurant_image"
+            android:textSize="@dimen/name"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingLeft="2dp"/>
+
+        <!-- Rating -->
+        <TextView
+            android:id="@+id/restaurant_rating"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/restaurant_name"
+            android:layout_marginTop="1dip"
+            android:layout_toRightOf="@+id/restaurant_image"
+            android:layout_alignTop="@+id/restaurant_image"
+
+            android:textSize="@dimen/rating"
+            android:paddingTop="19dp"
+            android:paddingLeft="8dp"/>
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/restaurant_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/restaurant_rating"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/restaurant_image"
+            android:textColor="@color/genre"
+            android:textSize="@dimen/description" />
+
+
+    </RelativeLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="55"
+            android:background="@color/bg_order"
+            android:layout_alignParentLeft="true">
+
+            <TextView
+                android:id="@+id/text_transport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transport"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+
+               />
+
+            <TextView
+                android:id="@+id/transport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RON 12.0"
+
+
+                android:paddingRight="10dp"
+
+                android:elevation="4dp"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="45"
+            android:background="@color/bg_order"
+            android:layout_alignParentRight="true"
+           >
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comanda Minima"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                />
+
+
+
+            <TextView
+                android:id="@+id/comanda_minima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingRight="10dp"
+
+                android:elevation="4dp"
+                android:layout_alignParentRight="true"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:text="RON 12"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <!-- Linie Orizontala -->
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+
+
+
+</LinearLayout>

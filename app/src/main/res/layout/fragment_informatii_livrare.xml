@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_order"
+
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_order"
+
+
+        android:orientation="vertical">
+        <ImageView
+
+
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/imageItemView"
+            android:scaleType="centerCrop"
+            android:src="@drawable/delivery_keyboard_button"
+
+            />
+        <TextView
+            android:id="@+id/txtOrasul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oras"
+            android:textStyle="bold"
+            android:gravity="left"
+            android:paddingLeft="8dp"
+            android:paddingTop="16dp"
+            android:textSize="13dp"
+            android:textColor="@color/text_shadow"
+      />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="5">
+            <EditText
+                android:id="@+id/edtOrasul"
+                android:layout_width="0px"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:hint="Orasul Tau"
+                android:inputType="textPersonName"
+                android:textSize="14dp"
+                android:paddingLeft="8dp"
+                />
+            <ImageButton
+                android:id="@+id/btn_getLocation"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_name"
+                android:layout_width="0px"
+                android:layout_weight="1"
+                android:background="@color/bg_order"
+           />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txtLocatia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Locatia"
+            android:gravity="left"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:textSize="13dp"
+            android:textColor="@color/text_shadow"
+            android:textStyle="bold"
+            />
+        <EditText
+            android:id="@+id/edtLocatia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Locatia Ta"
+            android:inputType="textPersonName"
+            android:textSize="14dp"
+            android:paddingLeft="8dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingRight="14dp"
+            android:paddingLeft="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plata"
+                android:layout_alignParentLeft="true"
+               android:paddingTop="6dp"
+                />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="La livrare"
+                android:checked="true"
+                android:id="@+id/chk_livrare"
+                android:layout_alignParentRight="true"
+
+                />
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:weightSum="1"
+        android:background = "@color/bg_order"
+        android:gravity = "center"
+        android:orientation = "horizontal"
+        android:paddingTop="12dp">
+
+        <View
+           android:layout_width="wrap_content"
+            android:layout_height = "0.3dp"
+            android:background = "#000"
+            android:layout_weight="0.3"/>
+
+        <TextView
+            android:id = "@+id/tv"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_gravity = "center"
+            android:layout_marginLeft = "8dp"
+            android:layout_marginRight = "8dp"
+            android:gravity = "center"
+            android:text = "Trimite comanda prin"
+            android:textSize = "14sp"
+          />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height = "0.3dp"
+            android:background = "#000"
+            android:layout_weight="0.3"/>
+    </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_order"
+
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="20dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <ImageButton
+            android:id = "@+id/email"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:background="@color/bg_order"
+
+            android:src="@drawable/mail56" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gmail"
+                android:textSize="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <ImageButton
+            android:id = "@+id/sms"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/bg_order"
+            android:src="@drawable/message64"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMS"
+                android:textSize="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id = "@+id/telegram"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@color/bg_order"
+                android:src="@drawable/t_logo" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telegram"
+                android:textSize="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-10dp"
+
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "662311623304",
+    "firebase_url": "https://papago-fbf95.firebaseio.com",
+    "project_id": "papago-fbf95",
+    "storage_bucket": "papago-fbf95.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662311623304:android:28712536316196d8",
+        "android_client_info": {
+          "package_name": "ro.softronic.mihai.ro.papamia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662311623304-206paokvtlesblhvtahfjih8l1r9ton1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0ewwjNCx17qbXJRzp1uE3nfbLWQdLkDM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

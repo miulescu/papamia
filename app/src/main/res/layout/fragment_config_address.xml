@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_order"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_order"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:id="@+id/imageItemView"
+            android:scaleType="centerCrop"
+            android:src="@drawable/flag_of_romania"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oras"
+            android:gravity="left"
+            android:paddingLeft="8dp"
+            android:paddingTop="36dp"
+            android:textSize="13dp"
+            android:textColor="@color/text_shadow"
+            />
+        <EditText
+            android:id="@+id/email_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Orasul Tau"
+            android:inputType="textPersonName"
+            android:textSize="14dp"
+            android:paddingLeft="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Locatia"
+            android:gravity="left"
+
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:textSize="13dp"
+            android:textColor="@color/text_shadow"
+            />
+        <EditText
+            android:id="@+id/locatia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Locatia Ta"
+            android:inputType="textPersonName"
+            android:textSize="14dp"
+            android:paddingLeft="8dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/restaurante_btn"
+            android:background="@drawable/button_comanda"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="44dp"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:padding="8dp"
+
+            >
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Arata Restaurantele"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:padding="2dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_row_selector"
+    android:padding="8dp" >
+
+    <!-- Thumbnail Image -->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp"
+        android:paddingTop="10dip" />
+        <RatingBar
+
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="0.5"
+            android:rating="3.5"
+            style="@style/RatingBar"
+
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:progressBackgroundTint="@color/bg_order"
+            android:progressTint="@color/colorStars"
+            android:secondaryProgressTint="@color/bg_order"/>
+    <!-- Item Title -->
+        <TextView
+            android:id="@+id/voters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(109)"
+            android:layout_toRightOf="@+id/ratingBar"
+            android:layout_alignTop="@+id/thumbnail"
+            android:textSize="11dp"
+            android:paddingLeft="5dp"
+           />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_below="@id/ratingBar"
+        android:textSize="@dimen/name"
+        android:textStyle="bold"
+       />
+
+
+
+
+    <!-- Genre -->
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textColor="@color/genre"
+        android:textSize="@dimen/description" />
+
+
+
+        <TextView
+            android:id="@+id/timp_livrare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_alignTop="@id/description"
+            android:textColor="@color/genre"
+            android:textSize="@dimen/description"
+            android:layout_alignParentRight="true"
+            android:text="ajunge in 60 min."
+            android:paddingTop="18dp"
+            android:paddingRight="20dp"
+            />
+
+</RelativeLayout>
+
+
+
+</LinearLayout>
