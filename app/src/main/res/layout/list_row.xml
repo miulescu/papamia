@@ -76,8 +76,6 @@
             android:id="@+id/timp_livrare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
             android:layout_alignTop="@id/description"
             android:textColor="@color/genre"
             android:textSize="@dimen/description"

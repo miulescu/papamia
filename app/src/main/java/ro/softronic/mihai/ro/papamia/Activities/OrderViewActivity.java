@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import ro.softronic.mihai.ro.papamia.Adapters.OrdersCursorAdapter;
@@ -34,6 +36,8 @@ public class OrderViewActivity extends AppCompatActivity {
     public int isEditMode = View.GONE;
     private SharedPreferences preferences= null;
     private SharedPreferences.Editor editor = null;
+    private NumberFormat formatter = new DecimalFormat("#0.00");
+
 
 
     @Override
@@ -53,10 +57,6 @@ public class OrderViewActivity extends AppCompatActivity {
         editor = preferences.edit();
 
         setTitle("Comanda ");
-
-
-
-
     }
 
     @Override
@@ -103,8 +103,6 @@ public class OrderViewActivity extends AppCompatActivity {
                 TextView qtyTxt  =(TextView) wantedView.findViewById(item_qty);
                 ImageView rem = (ImageView)wantedView.findViewById(R.id.item_remove) ;
 
-
-
 //                if (i == 0) {
 //                    etxt.requestFocus();
 //                }
@@ -133,11 +131,10 @@ public class OrderViewActivity extends AppCompatActivity {
             ViewGroup.LayoutParams list = (ViewGroup.LayoutParams) l.getLayoutParams();
 
             int nr_rows = Integer.parseInt(preferences.getString("ORDER_NR_ROWS", "0"));
-            list.height= nr_rows *180 - (nr_rows *2);//like int  200
+            list.height= nr_rows *230 - (nr_rows *5);//like int  200
             l.setLayoutParams(list);
             editor.putString("ORDER_NR_ROWS", String.valueOf(size_new));
             editor.apply();
-
 
             for ( int i = 0 ;i < size_new; i++) {
 
@@ -192,19 +189,16 @@ public class OrderViewActivity extends AppCompatActivity {
                     totalOrders+= o.getItemQTY();
                 }
 
-
-
-
                 //            AppController.getInstance().isFabVisible = false;
                 AppController.getInstance().fabQty  = totalOrders;
 
-                list.height= size_new *180 -(size_new *2);//like int  200
+                list.height= size_new * 230  -(size_new * 5);//like int  200
 
                 l.setLayoutParams(list);
                 //            LinearLayout l = (LinearLayout)fragment_obj.getView().findViewById(R.id.lista);
                 //            ViewGroup.LayoutParams list = (ViewGroup.LayoutParams) l.getLayoutParams();
                 Log.d("total price ", String.valueOf(totalPrice));
-                tx_totalPrice.setText("RON " + String.valueOf(totalPrice));
+                tx_totalPrice.setText("RON " + formatter.format(totalPrice));
             }
 
 //            new_orderCursor.close();

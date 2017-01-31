@@ -1,0 +1,103 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/radiogrouplayout"
+    android:visibility="gone"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Va rugam selectati"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"
+        android:paddingTop="12dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radiogroup"
+            android:paddingBottom="8dp"
+            />
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.2dp"
+        android:background="@android:color/darker_gray"
+
+        />
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/linearLayoutComanda"
+        android:background="@drawable/button_comanda"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:padding="8dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Comanda"
+                android:textColor="#ffffff"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:padding="2dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/linearLayoutNext"
+        android:background="@drawable/button_comanda"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="12dip"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:paddingLeft="26dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/pasul_urmator_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            >
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Pasul Urmator"
+                android:textColor="#ffffff"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginTop="-5dp"
+
+
+                />
+            <ImageView android:layout_width="50dp"
+                android:layout_height="18dp"
+                android:src = "@drawable/arrows_right_icon"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="12dp"
+    android:paddingLeft="8dp"
     android:layout_marginLeft="2dp"
     android:paddingRight="18dp"
     android:visibility="gone"
@@ -22,28 +22,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="24dp"
-        android:text="Restaurantul tau favorit nu e aici?"
+        android:text="Recomanda-ne un restaurant!"
         android:gravity="left"
         android:textColor="@color/restaurant_deschis"
-
-
         android:textSize="16dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recomanda-l!"
-        android:gravity="left"
 
-        android:textSize="13dp"
-        android:textColor="@color/text_shadow"
-        android:paddingBottom="14dp"/>
     <EditText
         android:id="@+id/edit_restaurant"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="Nume"
         android:inputType="textPersonName"
-        android:textSize="14dp"/>
+        android:textSize="14dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="-5dp"/>
     <EditText
         android:id="@+id/edit_locatia"
         android:layout_width="fill_parent"
@@ -51,27 +43,32 @@
         android:hint="Locatia"
         android:inputType="textPostalAddress"
         android:textSize="14dp"
-        />
+        android:layout_gravity="left"
+        android:layout_marginLeft="-5dp"
+    />
     <EditText
         android:id="@+id/edit_telefon"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="Telefon"
         android:inputType="text|number"
-        android:textSize="14dp"/>
+        android:textSize="14dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="-5dp"
+    />
 
-
-    <LinearLayout android:layout_width="wrap_content"
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/recomanda"
         android:background="@drawable/button_comanda"
-        android:layout_marginLeft="5dip"
+        android:layout_marginLeft="1dip"
         android:layout_marginRight="5dip"
         android:layout_marginTop="34dip"
         android:layout_centerInParent="true"
         android:clickable="true"
-        android:paddingLeft="26dp"
+        android:paddingLeft="21dp"
         android:gravity="center"
+        android:layout_gravity="left"
         >
 
         <RelativeLayout
@@ -88,6 +85,7 @@
                 android:textSize="14dp"
                 android:gravity="center"
                 android:layout_marginTop="-5dp"
+                android:layout_marginLeft="-8dp"
                 />
         </RelativeLayout>
     </LinearLayout>

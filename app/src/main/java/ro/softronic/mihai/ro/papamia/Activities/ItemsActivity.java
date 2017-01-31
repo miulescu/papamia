@@ -74,20 +74,19 @@ public class ItemsActivity extends AppCompatActivity {
                     .commit();
         }
 
-
         Bundle extras = getIntent().getExtras();
         String categorie = extras.getString("cat_nume");
         this.setTitle(categorie);
 
 
 //        setSupportActionBar(toolbar);
-
-
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.menu_items, menu);
 
         MenuItem item = menu.findItem(search);
         searchView = (SearchView) MenuItemCompat.getActionView(item);

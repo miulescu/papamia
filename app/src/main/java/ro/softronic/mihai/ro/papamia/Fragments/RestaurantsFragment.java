@@ -81,34 +81,20 @@ public class RestaurantsFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         preferences= getActivity().getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         editor = preferences.edit();
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-
         //lista de restaurante
         listView = (ListView)rootView.findViewById(R.id.listOpen);
         listView.setAdapter(null);
 
         mRestaurantsAdapter = new RestaurantsAdapter(this.getActivity() , restaurantsList);
-//        mRestaurantsSeparatedAdapter = new SeparatedListAdapter(this.getActivity());
         listView.setAdapter(mRestaurantsAdapter);
-
-//        listView.setOnTouchListener(new View.OnTouchListener() {
-//            // Setting on Touch Listener for handling the touch inside ScrollView
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                // Disallow the touch request for parent scroll on touch of child view
-//                v.getParent().requestDisallowInterceptTouchEvent(true);
-//                return false;
-//            }
-//        });
-//        setListViewHeightBasedOnChildren(listView);
-
-//        mProgressBar = (ProgressBar) rootView.findViewById(R.id.pbProgress);
-//        mProgressBar.setVisibility(View.VISIBLE);
 
         //dialogul in care alegem orasul si zona
         //TODO: de trasmis orasul si zona in fragmetul cu restaurantele
@@ -118,13 +104,6 @@ public class RestaurantsFragment extends Fragment {
         pd.getWindow().setBackgroundDrawableResource(R.drawable.background_progress_gradient);
         pd.setContentView(view);
         pd.show();
-
-//        FloatingActionButton fab = (FloatingActionButton)rootView.findViewById(R.id.fab);
-//        fab.clearAnimation();
-
-//        Animation scaleAnimation = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.scale);
-//        Animation scaleAnimation = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.scale);
-//        fab.startAnimation(scaleAnimation);
 
         executeRequest();
 
@@ -248,8 +227,8 @@ public class RestaurantsFragment extends Fragment {
             }
         }, 4000);
 
-        LinearLayout btn = (LinearLayout)footer.findViewById(R.id.recomanda);
-        btn.setOnClickListener(new View.OnClickListener() {
+        LinearLayout btn_recomanda = (LinearLayout)footer.findViewById(R.id.recomanda);
+        btn_recomanda.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -261,11 +240,9 @@ public class RestaurantsFragment extends Fragment {
                 String telefon_restaurant_recomandat  = ((EditText)footer.findViewById(R.id.edit_telefon)).getText().toString();
 
                 StringBuilder sb = new StringBuilder();
-
                 sb.append(nume_restaurant_recomandat);
                 sb.append(locatia_restaurant_recomandat);
                 sb.append(telefon_restaurant_recomandat);
-
 
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
@@ -285,7 +262,6 @@ public class RestaurantsFragment extends Fragment {
         });
 //
 
-
 //        movieReq.setRetryPolicy(new DefaultRetryPolicy(10 *1000, 10,
 //                1f));
 //        AppController.getInstance().addToRequestQueue(movieReq);
@@ -302,10 +278,12 @@ public class RestaurantsFragment extends Fragment {
                 Bundle extras = new Bundle();
                 extras.putString("restID", restaurant.getRestID());
                 extras.putDouble("rest_pretTransport", restaurant.getPret_transport());
+                editor.putString("restaurant_timpLivrare", String.valueOf(restaurant.getTimp_livrare()));
                 editor.putString("restaurant_id", restaurant.getRestID());
                 editor.putFloat("restaurant_transport", (float)restaurant.getPret_transport());
                 editor.putString("restaurant_telefon", restaurant.getPhone_no());
                 editor.putString("restaurant_email", restaurant.getEmail());
+                editor.putBoolean("restaurant_has_offers", restaurant.getHas_offers());
                 editor.apply();
 
                 if (restaurant.getOpen() == 1){
@@ -318,21 +296,10 @@ public class RestaurantsFragment extends Fragment {
                 // ("restID", restaurant.getRestID());
                 startActivity(intent);
 //                Toast.makeText(getActivity(), restaurant.getName(), Toast.LENGTH_SHORT).show();
-
             }
         });
 
-//        if (AppController.getInstance().isFabVisible)
-//        {
-//                FloatingActionButton cartFAB = (FloatingActionButton) rootView.findViewById(R.id.fab);
-//                cartFAB.setVisibility(View.VISIBLE);
-//                TextView cartQTY = (TextView) rootView.findViewById(R.id.cartQTY);
-//                cartQTY.setVisibility(View.VISIBLE);
-//        }
-
-
         return rootView;
-
     }
 
 
@@ -414,6 +381,7 @@ public class RestaurantsFragment extends Fragment {
                                 restaurant.setEmail(obj.getString("adr_email"));
                                 restaurant.setPhone_no(obj.getString("adr_phone"));
 
+                                restaurant.setHas_offers(obj.getString("info_has_offers"));
 
 
                                 int ora_deschidere = (Integer.parseInt(obj.getString("info_ora_deschidere")));
@@ -458,7 +426,7 @@ public class RestaurantsFragment extends Fragment {
 
                     ProgressBar pb = (ProgressBar)view.findViewById(R.id.progressBar1);
                     pb.setVisibility(View.GONE);
-                   TextView tx_incarc = (TextView)view.findViewById(R.id.textProgress);
+                    TextView tx_incarc = (TextView)view.findViewById(R.id.textProgress);
                     tx_incarc.setVisibility(View.GONE);
                     Button btn_iesire = (Button)view.findViewById(R.id.iesire);
                     btn_iesire.setVisibility(View.VISIBLE);

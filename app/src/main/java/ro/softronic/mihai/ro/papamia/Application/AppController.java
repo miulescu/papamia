@@ -41,6 +41,7 @@ public class AppController extends Application {
         //-----Recreez tabela de la 0---///
         oDbHelper = new OrderDatabaseHandler(getApplicationContext());
         oDbHelper.getWritableDatabase().execSQL("DROP TABLE IF EXISTS " + "orders");
+        oDbHelper.getWritableDatabase().execSQL("DROP TABLE IF EXISTS " + "offers");
         oDbHelper.reCreateTable(oDbHelper.getWritableDatabase());
     }
 

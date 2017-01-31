@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import ro.softronic.mihai.ro.papamia.Application.AppController;
@@ -53,6 +55,7 @@ public class ItemsAdapter extends
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
+        NumberFormat formatter = new DecimalFormat("#0.00");
         ViewHolder holder;
         if (inflater==null){
             inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -70,7 +73,7 @@ public class ItemsAdapter extends
 
         holder.name.setText(r.getName());
         holder.description.setText(r.getDescriere());
-        holder.price.setText("RON " +  r.getPrice().toString());
+        holder.price.setText("RON " +  formatter.format(r.getPrice()));
         holder.thumbnail.setImageUrl(r.getThumbnailUrl(), imageLoader);
 
 

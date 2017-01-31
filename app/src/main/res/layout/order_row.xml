@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:background="@color/bg_order"
     android:padding="8dp"
@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/name"
-
         android:padding="4dp"
         android:textColor="#228921"/>
     <EditText
@@ -24,8 +23,6 @@
         android:textSize="15dp"
         android:visibility="gone"
         android:inputType="number"
-
-
         />
     <TextView
         android:id="@+id/item_name"
@@ -34,22 +31,20 @@
         android:textSize="@dimen/name"
         android:layout_gravity="center_vertical"
         android:padding="4dp"/>
-
     <TextView
         android:id="@+id/items_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/name"
         android:paddingRight="15dp"
-        android:paddingLeft="18dp"
         android:layout_gravity="center_vertical"/>
-
     <ImageButton
         android:id = "@+id/item_remove"
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:visibility="gone"
         android:layout_gravity="center_vertical"
-        android:src="@drawable/cancel_close_cross_delete_exit_remove_icon" />
+        android:src="@drawable/cancel_close_cross_delete_exit_remove_icon"
+        />
 
 </LinearLayout>

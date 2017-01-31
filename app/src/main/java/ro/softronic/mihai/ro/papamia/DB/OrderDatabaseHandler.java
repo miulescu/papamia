@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import ro.softronic.mihai.ro.papamia.POJOs.Offer;
 import ro.softronic.mihai.ro.papamia.POJOs.Order;
 
 public class OrderDatabaseHandler extends SQLiteOpenHelper {
@@ -22,43 +23,58 @@ public class OrderDatabaseHandler extends SQLiteOpenHelper {
 
     // Contacts table name
     private static final String TABLE_ORDERS = "orders";
+    private static final String TABLE_OFFERS = "offers";
 
-    // Contacts Table Columns names
+    // Orders Table Columns names
     private static final String KEY_ID = "_id";
     private static final String KEY_ITEM_ID = "item_id";
     private static final String KEY_ITEM_NAME = "item_name";
     private static final String KEY_ITEM_QTY = "item_qty";
     private static final String KEY_ITEM_TOTAL_PRICE = "item_total_price";
 
+    // Offers Table Column Names
+    private static final String KEY_TABLE_ID = "_id";
+    private static final String KEY_OFFER_ID = "offer_id";
+    private static final String KEY_OFFER_SUBJECT_NAME = "subiect_oferta_name";
+    private static final String KEY_OFFER_SUBJECT_QTY = "subiect_item_qty";
+    private static final String KEY_ITEM_DE_OFFERIT_NAME = "de_oferit_item_name";
+
+
+    private static final String CREATE_ORDERS_TABLE = "CREATE TABLE " + TABLE_ORDERS + " ("
+            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_ITEM_ID + " INTEGER,"
+            + KEY_ITEM_NAME + " TEXT,"
+            + KEY_ITEM_QTY + " INTEGER,"
+            + KEY_ITEM_TOTAL_PRICE + " REAL" + " )";
+
+    private static final String CREATE_OFFERS_TABLE = "CREATE TABLE " + TABLE_OFFERS + " ("
+            + KEY_TABLE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_OFFER_ID + " INTEGER,"
+            + KEY_OFFER_SUBJECT_NAME + " TEXT,"
+            + KEY_OFFER_SUBJECT_QTY + " INTEGER,"
+            + KEY_ITEM_DE_OFFERIT_NAME + " TEXT" + " )";
 
     public OrderDatabaseHandler(Context context) {
-
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
     }
 
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        String CREATE_ORDERS_TABLE = "CREATE TABLE " + TABLE_ORDERS + " ("
-                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + KEY_ITEM_ID + " INTEGER,"
-                + KEY_ITEM_NAME + " TEXT,"
-                + KEY_ITEM_QTY + " INTEGER,"
-                + KEY_ITEM_TOTAL_PRICE + " REAL" + " )";
         db.execSQL(CREATE_ORDERS_TABLE);
+        db.execSQL(CREATE_OFFERS_TABLE);
     }
 
     public void reCreateTable(SQLiteDatabase db) {
 
-        String CREATE_ORDERS_TABLE = "CREATE TABLE " + TABLE_ORDERS + " ("
-                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + KEY_ITEM_ID + " INTEGER,"
-                + KEY_ITEM_NAME + " TEXT,"
-                + KEY_ITEM_QTY + " INTEGER,"
-                + KEY_ITEM_TOTAL_PRICE + " REAL" + " )";
+//        String CREATE_ORDERS_TABLE = "CREATE TABLE " + TABLE_ORDERS + " ("
+//                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+//                + KEY_ITEM_ID + " INTEGER,"
+//                + KEY_ITEM_NAME + " TEXT,"
+//                + KEY_ITEM_QTY + " INTEGER,"
+//                + KEY_ITEM_TOTAL_PRICE + " REAL" + " )";
         db.execSQL(CREATE_ORDERS_TABLE);
+        db.execSQL(CREATE_OFFERS_TABLE);
     }
 
     // Upgrading database
@@ -66,6 +82,7 @@ public class OrderDatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ORDERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_OFFERS);
 
         // Create tables again
         onCreate(db);
@@ -175,6 +192,47 @@ public class OrderDatabaseHandler extends SQLiteOpenHelper {
 
         // return count
         return cursor.getCount();
+    }
+
+    public void addOffer(Offer offer) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_TABLE_ID, offer.getID());
+        values.put(KEY_OFFER_ID, offer.getOfferId());
+        values.put(KEY_OFFER_SUBJECT_NAME, offer.get_subiect_oferta_name());
+        values.put(KEY_OFFER_SUBJECT_QTY, offer.get_subiect_item_qty());
+        values.put(KEY_ITEM_DE_OFFERIT_NAME, offer.get_de_oferit_item_name());
+
+        db.insert(TABLE_OFFERS, null, values);
+        db.close();
+    }
+
+    public List<Offer> getAllOffers() {
+        List<Offer> offerList = new ArrayList<Offer>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_OFFERS ;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.getCount() > 0) {
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    Offer offer = new Offer();
+                    offer.setID(Integer.parseInt(cursor.getString(0)));
+                    offer.setOfferId(Integer.parseInt(cursor.getString(1)));
+                    offer.set_subiect_oferta_name(cursor.getString(2));
+                    offer.set_subiect_item_qty(Integer.parseInt(cursor.getString(3)));
+                    offer.set_de_oferit_item_name(cursor.getString(4));
+                    // Adding contact to list
+                    offerList.add(offer);
+                } while (cursor.moveToNext());
+            }
+        }
+//        db.close();
+        return offerList;
+
     }
 
 }

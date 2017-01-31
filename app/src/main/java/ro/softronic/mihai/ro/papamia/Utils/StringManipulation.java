@@ -24,4 +24,12 @@ public class StringManipulation {
         if (s1.size() == k) return true;
         return false;
     }
+
+    public static boolean toBoolean( String target )
+    {
+        if( target == null ) return false;
+        else if (target.equals("1"))  return true;
+        else if (target.equals("0")) return false;
+        return false;
+    }
 }

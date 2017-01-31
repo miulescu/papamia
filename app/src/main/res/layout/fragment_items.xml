@@ -25,7 +25,6 @@
         android:divider="@color/list_divider"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_row_selector" />
-
     <FrameLayout
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -35,15 +34,11 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
-
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/name"
             android:src="@drawable/shopping_bag128"
-
-
              />
         <TextView
             android:layout_width="wrap_content"

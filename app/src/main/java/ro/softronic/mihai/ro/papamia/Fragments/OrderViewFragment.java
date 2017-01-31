@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +55,7 @@ public class OrderViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        NumberFormat formatter = new DecimalFormat("#0.00");
 
         preferences= getActivity().getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -86,7 +89,7 @@ public class OrderViewFragment extends Fragment {
 
         editor = preferences.edit();
         int nr_rows = Integer.valueOf(preferences.getString("ORDER_NR_ROWS", "0"));
-        list.height= nr_rows  * 260 - (nr_rows * 2);//like int  200
+        list.height= nr_rows  * 230 - (nr_rows * 5);//like int  200
         l.setLayoutParams(list);
 
         TextView tx_transport = (TextView)rootView.findViewById(R.id.transport_numeric);
@@ -99,7 +102,7 @@ public class OrderViewFragment extends Fragment {
             totalPrice+= o.getItemTotalPrice();
         }
 
-        tx_pretTotal.setText("RON " + String.valueOf(totalPrice));
+        tx_pretTotal.setText("RON " + formatter.format(totalPrice));
 //
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override

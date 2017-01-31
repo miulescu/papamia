@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import ro.softronic.mihai.ro.papamia.Activities.OrderViewActivity;
@@ -135,7 +137,9 @@ public class OrdersCursorAdapter extends
 
     @Override
     public void bindView(View view, final Context context, final Cursor cursor) {
+            NumberFormat formatter = new DecimalFormat("#0.00");
 //        super.bindView(view, context, cursor);
+
             final OrderDatabaseHandler odb = AppController.getOrdersDatabaseHelper();
             int order_id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
             String name = cursor.getString(cursor.getColumnIndexOrThrow("item_name"));
@@ -267,7 +271,7 @@ public class OrdersCursorAdapter extends
 
                     }
 
-//                    Order o = odb.getOrder(i+1);
+//                    FireBaseMessageOrderObject o = odb.getOrder(i+1);
 
 //                   o.setID(i+1);
 //
@@ -297,7 +301,7 @@ public class OrdersCursorAdapter extends
 
         holder.name.setText(name);
         holder.qty.setText(String.valueOf(qty));
-        holder.price.setText(String.valueOf(price));
+        holder.price.setText(formatter.format(price));
         holder.edit_qty.setText(String.valueOf(qty));
 
 //        holder.btn_remove.setId(cursor.getInt(cursor.getColumnIndexOrThrow("_id")));

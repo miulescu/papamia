@@ -6,6 +6,7 @@ public class Item {
     private String descriere;
     private String item_id, rest_id;
     private Double pret;
+    private boolean extras;
 
 
     public Item() {
@@ -71,6 +72,14 @@ public class Item {
     public void setItemID(String item_id) {
         this.item_id = item_id;
     }
+
+    public void setExtras(boolean extras){
+        this.extras = extras;
+    }
+    public boolean isExtras(){
+        return  extras;
+    }
+
 
 
 }

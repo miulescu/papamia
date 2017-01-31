@@ -21,19 +21,23 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.telephony.SmsManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +55,9 @@ import ro.softronic.mihai.ro.papamia.Activities.MainActivity;
 import ro.softronic.mihai.ro.papamia.Adapters.OrdersCursorAdapter;
 import ro.softronic.mihai.ro.papamia.POJOs.Order;
 import ro.softronic.mihai.ro.papamia.R;
+import ro.softronic.mihai.ro.papamia.Utils.GPSCoordinates;
+import ro.softronic.mihai.ro.papamia.Utils.SingleShotLocationProvider;
+
 
 public class InformatiiLivrareFragment extends Fragment {
 
@@ -82,6 +89,7 @@ public class InformatiiLivrareFragment extends Fragment {
 
     public static final int USE_ADDRESS_LOCATION = 2;
     int fetchType = USE_ADDRESS_LOCATION;
+
 
 
     public InformatiiLivrareFragment(){
@@ -137,7 +145,7 @@ public class InformatiiLivrareFragment extends Fragment {
         final String email_body = extras.getString("str_email_de_trimis", "");
 
 
-        View rootView = inflater.inflate(R.layout.fragment_informatii_livrare, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_informatii_livrare, container, false);
 
         preferences = getActivity().getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -150,6 +158,33 @@ public class InformatiiLivrareFragment extends Fragment {
             @Override
             public void onClick(View v ) {
                 chk.setChecked(true);
+            }
+        });
+
+        final TextView txt_optiuni = (TextView) rootView.findViewById(R.id.txt_optiuni);
+        final EditText edt_optiuni = (EditText) rootView.findViewById(R.id.edt_optiuni);
+        final RelativeLayout lyt_pickup = (RelativeLayout) rootView.findViewById(R.id.lyt_pickup);
+        final RelativeLayout lyt_plata_la_livrare  = (RelativeLayout) rootView.findViewById(R.id.lyt_plata_livrare);
+
+        ToggleButton tgl_optiuni = (ToggleButton) rootView.findViewById(R.id.toggleButtonOptiuni);
+        tgl_optiuni.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+//                    txt_optiuni.setVisibility(View.GONE);
+                    txt_optiuni.setText("Mesaj:");
+                    edt_optiuni.setVisibility(View.VISIBLE);
+                    lyt_pickup.setVisibility(View.VISIBLE);
+                    lyt_plata_la_livrare.setVisibility(View.VISIBLE);
+
+                } else {
+                    txt_optiuni.setText("Optiuni");
+                    edt_optiuni.setVisibility(View.GONE);
+                    lyt_pickup.setVisibility(View.GONE);
+                    lyt_plata_la_livrare.setVisibility(View.GONE);
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(rootView.getWindowToken(), 0);
+                    // The toggle is disabled
+                }
             }
         });
 
@@ -235,6 +270,14 @@ public class InformatiiLivrareFragment extends Fragment {
                     //*************send notification (insert in Firebase Database) **************
 
                     //first construct de message
+                    // TODO: Construct de MAP here!!!
+                    // are restaurant nume, restaurant phone,
+                    // //user_login, user_phone, order_body,
+                    // order_price, timp_de_livrare
+
+                    TelephonyManager tMgr = (TelephonyManager)getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+                    String mPhoneNumber = tMgr.getLine1Number();
+
                     sendNotificationToRestaurantAndDriver(email_body, "Temple Bars");
 
 
@@ -285,7 +328,7 @@ public class InformatiiLivrareFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //noinspection MissingPermission
-                lm.requestLocationUpdates("gps", 0, 0, locationListener);
+//                lm.requestLocationUpdates("gps", 0, 0, locationListener);
 
 
                 Animation anim = new AlphaAnimation(0.0f, 1.0f);
@@ -294,16 +337,27 @@ public class InformatiiLivrareFragment extends Fragment {
                 anim.setRepeatMode(Animation.REVERSE);
                 anim.setRepeatCount(Animation.INFINITE);
                 txt_locatia.startAnimation(anim);
+
+
+                SingleShotLocationProvider.requestSingleUpdate(getActivity(),
+                        new SingleShotLocationProvider.LocationCallback() {
+                            @Override public void onNewLocationAvailable(GPSCoordinates location) {
+                                Log.d("Latitude", "my location is " + location.latitude);
+                                new GeocodeAsyncTask().execute(new LatLng(location.latitude,location.longitude));
+                                edtLocatia.setText("\n " + location.latitude + " " + location.longitude);
+                                txt_locatia.clearAnimation();
+                            }
+                        });
             }
         });
     }
-
+    // de facut o clasa
     private void sendNotificationToRestaurantAndDriver( String detrimis, String s) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Map notification = new HashMap();
         notification.put("Restaurant", s);
-        notification.put("Order", detrimis);
+        notification.put("FireBaseMessageOrderObject", detrimis);
         mDatabase.child("notificationsRequest").push().setValue(notification);
 //        String locationProvider = LocationManager.NETWORK_PROVIDER;
 //        locationManager.requestLocationUpdates(locationProvider, 0, 0, locationListener);
@@ -425,17 +479,17 @@ public class InformatiiLivrareFragment extends Fragment {
         }
     }
 
-    private void turnGPSOff(){
-        String provider = Settings.Secure.getString(getActivity().getContentResolver(),
-                Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-
-        if(provider.contains("gps")){ //if gps is enabled
-            final Intent poke = new Intent();
-            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
-            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
-            poke.setData(Uri.parse("3"));
-            getActivity().sendBroadcast(poke);
-        }
-    }
+//    private void turnGPSOff(){
+//        String provider = Settings.Secure.getString(getActivity().getContentResolver(),
+//                Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+//
+//        if(provider.contains("gps")){ //if gps is enabled
+//            final Intent poke = new Intent();
+//            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+//            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+//            poke.setData(Uri.parse("3"));
+//            getActivity().sendBroadcast(poke);
+//        }
+//    }
 
 }

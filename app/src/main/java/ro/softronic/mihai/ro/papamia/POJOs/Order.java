@@ -76,4 +76,17 @@ public class Order {
     public double getItemPrice(){
         return _item_total_price/_item_qty;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj instanceof Order) {
+            Order o = (Order) obj;
+            if (o.getItemQTY() == this.getItemQTY()) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
 }

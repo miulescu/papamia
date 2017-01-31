@@ -42,6 +42,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -99,6 +100,8 @@ public class MainActivity extends AppCompatActivity  implements android.widget.C
     private FirebaseAuth auth;
 
     private boolean bypass;
+
+    private Switch actionView;
 
     @Override
     public void onBackPressed() {
@@ -171,6 +174,7 @@ public class MainActivity extends AppCompatActivity  implements android.widget.C
                                         android.R.anim.fade_out)
                                 .remove(f)
                                 .commitAllowingStateLoss();
+
                     }
 
                     getSupportFragmentManager().beginTransaction()
@@ -184,9 +188,6 @@ public class MainActivity extends AppCompatActivity  implements android.widget.C
 
                 }
                 else if (position == 1){
-
-
-
 //                    getSupportFragmentManager().popBackStack(null, getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
 //
 //
@@ -335,6 +336,8 @@ public class MainActivity extends AppCompatActivity  implements android.widget.C
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         mActivityTitle = getTitle().toString();
 
@@ -596,6 +599,32 @@ public class MainActivity extends AppCompatActivity  implements android.widget.C
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
 
+        final MenuItem toggleservice = menu.findItem(R.id.myswitch);
+        actionView = (Switch) toggleservice.getActionView();
+
+        actionView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                final RestaurantsFragment fragment_obj = (RestaurantsFragment) getSupportFragmentManager().
+                        findFragmentByTag("restaurants_frag");
+                if (isChecked){
+
+                    //daca pickup atunci se va tine minte flagul si vom vedea la orderview
+                    joined = "pizza";
+                    fragment_obj.getAdapter().getFilter().filter(joined);
+                }
+                else{
+                    fragment_obj.getAdapter().setOriginalData();
+                }
+                //check flag!!!
+
+
+//                Toast.makeText(getApplication(), "here", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        final Switch actionView = (Switch) MenuItemCompat.getActionView(toggleservice);//toggleservice.getActionView();
         MenuItem item = menu.findItem(search);
         searchView = (SearchView) MenuItemCompat.getActionView(item);
         SearchView.SearchAutoComplete autoCompleteTextView = (SearchView.SearchAutoComplete) searchView.findViewById(R.id.search_src_text);
@@ -634,9 +663,18 @@ public class MainActivity extends AppCompatActivity  implements android.widget.C
         }
         switch (item.getItemId()) {
             case android.R.id.home:
+            case R.id.pieton:
 
+                Toast.makeText(this, "here", Toast.LENGTH_SHORT).show();
+                if (actionView.isChecked()){
+                    actionView.setChecked(false);
+            }else{
+                    actionView.setChecked(true);
+                }
+
+                return true;
             case search:
-                Toast.makeText(this, "yahoo", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "yahoo", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.action_info:
@@ -664,7 +702,7 @@ public class MainActivity extends AppCompatActivity  implements android.widget.C
         final View header = getLayoutInflater().inflate(R.layout.header_lisview_restaurants, null, false);
         boolean cleared = true;
 
-        int pos = drawerView.getPositionForView(compoundButton) - 1;
+        int pos = drawerView.getPositionForView(compoundButton) - 2;
 
         CheckBox chk = (CheckBox) compoundButton;
 
@@ -778,7 +816,7 @@ public class MainActivity extends AppCompatActivity  implements android.widget.C
 
             int index = uri.lastIndexOf('/');
             String rest_id = uri.substring(index + 1, uri.length());
-            Toast.makeText(this, "Suggestion: " + rest_id, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Suggestion: " + rest_id, Toast.LENGTH_SHORT).show();
 
             for (Restaurant restaurant : restaurants) {
                 if (restaurant.getRestID().equals(rest_id)) {

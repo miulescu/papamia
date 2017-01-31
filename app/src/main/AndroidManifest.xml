@@ -70,7 +70,8 @@
             android:screenOrientation="sensorPortrait"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleTop"
-            android:parentActivityName=".Activities.MainActivity" >
+            android:parentActivityName=".Activities.MainActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
             </intent-filter>
@@ -125,7 +126,8 @@
             android:exported="true"
             android:name=".Activities.InformatiiLivrareActivity"
             android:screenOrientation="sensorPortrait"
-            android:configChanges="orientation|keyboardHidden">
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden">
 
 
         </activity>

@@ -15,6 +15,7 @@ public class Restaurant implements Comparable<Restaurant> {
     private double pret_transport;
     private String phone_no;
     private String email;
+    private boolean _has_offers;
 
     public Restaurant() {
     }
@@ -103,6 +104,11 @@ public class Restaurant implements Comparable<Restaurant> {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean getHas_offers(){return _has_offers;}
+    public void setHas_offers(String has_offers){
+            _has_offers = has_offers.equals("null") ? false: true;
     }
 
     @Override

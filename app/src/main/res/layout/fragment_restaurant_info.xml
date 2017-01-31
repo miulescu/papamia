@@ -57,7 +57,37 @@
             android:layout_toRightOf="@+id/restaurant_image"
             android:textColor="@color/genre"
             android:textSize="@dimen/description" />
+        <LinearLayout
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignTop="@id/restaurant_description"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:paddingTop="18dp"
+            android:paddingRight="20dp"
 
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:layout_gravity="center_vertical"
+            />
+            <ToggleButton
+                android:id="@+id/toggle_heart"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/heart"
+                android:layout_alignTop="@id/restaurant_description"
+                android:textOn=""
+                android:textOff=""
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+    />
+        </LinearLayout>
 
     </RelativeLayout>
     <View
@@ -74,21 +104,20 @@
             android:id="@+id/relativeLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="55"
+            android:layout_weight="25"
             android:background="@color/bg_order"
-            android:layout_alignParentLeft="true">
-
-            <TextView
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="4dp">
+            <ImageView
                 android:id="@+id/text_transport"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Transport"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_local_shipping_black_24dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:paddingLeft="10dp"
+                android:paddingLeft="2dp"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
-
                />
 
             <TextView
@@ -96,10 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RON 12.0"
-
-
                 android:paddingRight="10dp"
-
                 android:elevation="4dp"
                 android:textSize="14dp"
                 android:textStyle="bold"
@@ -117,25 +143,22 @@
             android:id="@+id/relativeLayout2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="45"
+            android:layout_weight="23"
             android:background="@color/bg_order"
             android:layout_alignParentRight="true"
            >
 
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/text_min"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comanda Minima"
+                android:text="Min:"
                 android:layout_alignParentLeft="true"
                 android:paddingLeft="10dp"
                 android:layout_centerVertical="true"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
                 />
-
-
-
             <TextView
                 android:id="@+id/comanda_minima"
                 android:layout_width="wrap_content"
@@ -147,9 +170,93 @@
                 android:layout_alignParentRight="true"
                 android:textSize="14dp"
                 android:textStyle="bold"
-                android:text="RON 12"
+                android:text="12"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="27"
+            android:background="@color/bg_order"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/img_cooking"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_query_builder_black_24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="8dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                />
+            <TextView
+                android:id="@+id/txtCooking_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingRight="10dp"
+
+                android:elevation="4dp"
+                android:layout_alignParentRight="true"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:text="40'"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+        <RelativeLayout
+            android:id="@+id/relativeLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@color/bg_order"
+            android:layout_alignParentLeft="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/text_transport4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@mipmap/ic_coins"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    />
+                <ImageView
+                    android:id="@+id/transport4"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/ic_card"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"/>
+
+            </LinearLayout>
+
+
+
 
         </RelativeLayout>
 

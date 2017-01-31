@@ -69,8 +69,6 @@ public class RestaurantInfoFragment extends Fragment {
         setHasOptionsMenu(true);
         final ImageLoader mImageLoader = AppController.getInstance().getImageLoader();
 
-
-
         final CategoriiActivity activity = (CategoriiActivity) getActivity();
         final TextView nameView = (TextView)rootView.findViewById(R.id.restaurant_name);
         final TextView detailsView = (TextView)rootView.findViewById(R.id.restaurant_description);
@@ -78,8 +76,6 @@ public class RestaurantInfoFragment extends Fragment {
         final NetworkImageView imageView = (NetworkImageView)rootView.findViewById(R.id.restaurant_image);
         final TextView transportView = (TextView)rootView.findViewById(transport);
         final TextView comandaView = (TextView)rootView.findViewById(R.id.comanda_minima);
-
-
 
         final String restID = activity.getRestID();
         StringBuilder sb = new StringBuilder();
@@ -110,10 +106,8 @@ public class RestaurantInfoFragment extends Fragment {
                         // Parsing json
 
                         try {
-
                             JSONObject obj = response.getJSONObject(0);
                             Item item = new Item();
-
                             String name = obj.getString("rest_nume");
                             String rating = obj.getString("rest_nume");
                             String description = obj.getString("rest_descriere");
@@ -125,6 +119,7 @@ public class RestaurantInfoFragment extends Fragment {
                             String ora_deschidere = obj.getString("info_ora_deschidere");
                             String ora_inchidere = obj.getString("info_ora_inchidere");
                             String info_orar = ora_deschidere + ":00-" + ora_inchidere +":00";
+
 
 
                             LatLng rest_gps = new LatLng(lat,lng);
@@ -140,6 +135,10 @@ public class RestaurantInfoFragment extends Fragment {
 
                             RestaurantInfo ri = new RestaurantInfo(info_deschis, info_orar, 0.0);
                             activity.setRestaurant_info(ri);
+
+
+                            String has_offers = obj.getString("info_has_offers");
+
 
 
 
@@ -201,6 +200,28 @@ public class RestaurantInfoFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         mi = menu.getItem(1);
     }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.clear();    //remove all items
+        getActivity().getMenuInflater().inflate(R.menu.restaurantfragment, menu);
+        mi = menu.getItem(1);
+        mi.setVisible(true);
+    }
+
+//    @Override
+//    public void onResume() {
+//        Log.e("DEBUG", "onResume of LoginFragment");
+//
+//        MenuInflater inflater = getActivity().getMenuInflater();
+//        inflater.inflate(R.menu.restaurantfragment, menuF);
+//        mi = menuF.findItem(R.id.action_info);
+//        mi.setVisible(true);
+//        super.onResume();
+//
+//
+//    }
 
 
 

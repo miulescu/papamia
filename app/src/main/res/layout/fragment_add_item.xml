@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/list_row_start_color"
+    tools:context=".Activities.MainActivity$RestaurantItemsFragment" >
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_row_selector"
-
     android:weightSum="5"
     android:orientation="vertical">
 
-
     <com.android.volley.toolbox.NetworkImageView
-
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:id="@+id/imageItemView"
         android:scaleType="centerCrop"
-
         />
 
     <RelativeLayout
@@ -28,8 +31,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
        >
-
-
         <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
@@ -40,7 +41,6 @@
             android:layout_marginRight="8dp"
             android:paddingTop="8dp"
             android:paddingLeft="16dp"
-
             android:textSize="16dp"
            />
 
@@ -49,7 +49,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/descriptiontextView"
-
             android:paddingTop="2dp"
             android:paddingLeft="16dp"
             android:layout_below="@id/nameView"
@@ -147,10 +146,6 @@
             />
 
     </LinearLayout>
-
-
-
-
 
     <TextView
         android:text="Cantitate"
@@ -253,8 +248,6 @@
         android:layout_centerInParent="true"
         android:clickable="true"
         android:padding="8dp"
-
-
       >
 
         <RelativeLayout
@@ -268,9 +261,62 @@
                 android:textSize="14dp"
                 android:gravity="center"
                 android:padding="2dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/linearLayoutNext"
+        android:background="@drawable/button_comanda"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="12dip"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:paddingLeft="26dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/pasul_urmator_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            >
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Pasul Urmator"
+                android:textColor="#ffffff"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:layout_marginTop="-5dp"
+
+
+                />
+            <ImageView android:layout_width="50dp"
+                android:layout_height="18dp"
+                android:src = "@drawable/arrows_right_icon"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                />
 
         </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>
+
     </ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_cadou"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="26dp"
+        android:src="@drawable/material_icons_giftbox56"
+        app:layout_anchor="@id/imageItemView"
+        app:layout_anchorGravity="bottom|right|end"
+        app:backgroundTint="@color/material_red_FAB"
+
+        android:scaleType="center"
+
+        />
+    </android.support.design.widget.CoordinatorLayout>

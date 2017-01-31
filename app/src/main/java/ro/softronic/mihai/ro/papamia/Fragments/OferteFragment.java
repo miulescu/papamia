@@ -40,10 +40,8 @@ public class OferteFragment extends Fragment implements View.OnClickListener{
 
     MenuItem mi1;
     MenuItem mi2;
-
-
-
-
+    MenuItem mi3;
+    MenuItem mi4;
 
     public OferteFragment() {
 
@@ -92,10 +90,13 @@ public class OferteFragment extends Fragment implements View.OnClickListener{
         super.onCreateOptionsMenu(menu, inflater);
         mi1 = menu.getItem(0);
         mi2 = menu.getItem(1);
-
+        mi3 = menu.getItem(2);
+        mi4 = menu.getItem(3);
 
         mi1.setVisible(false);
         mi2.setVisible(false);
+        mi3.setVisible(false);
+        mi4.setVisible(false);
     }
 }
 

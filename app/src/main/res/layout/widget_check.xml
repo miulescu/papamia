@@ -21,7 +21,6 @@
         android:entries="@array/sortare_array"
         android:paddingLeft="10dp"
         android:paddingBottom="13dp"
-
      />
 
 </LinearLayout>

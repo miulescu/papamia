@@ -307,17 +307,17 @@ public class CategoriiActivity extends AppCompatActivity {
                             //----recreez tabela de orders pentru un nou restaurant ----//
                             OrderDatabaseHandler odb = AppController.getOrdersDatabaseHelper();
                             odb.getWritableDatabase().execSQL("DROP TABLE IF EXISTS " + "orders");
+                            odb.getWritableDatabase().execSQL("DROP TABLE IF EXISTS " + "offers");
                             odb.reCreateTable(odb.getReadableDatabase());
+                            //TODO:Clear shared Preferences!!!!
                             finish();
 //                            dialog.dismiss();
                         }
                     });
 
                     builder.setNegativeButton("NU", new DialogInterface.OnClickListener() {
-
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
                             // Do nothing
                             dialog.dismiss();
                         }
@@ -326,7 +326,6 @@ public class CategoriiActivity extends AppCompatActivity {
                     AlertDialog alert = builder.create();
                     alert.show();
                     }else{
-
                         int commit = getSupportFragmentManager().beginTransaction()
                                 .add(R.id.container_categorii, new RestaurantCategoriiFragment(), "frag_map")
 //                    .addToBackStack(null)
@@ -393,9 +392,6 @@ public class CategoriiActivity extends AppCompatActivity {
 
 
                 case R.id.action_info:
-
-
-
                     flag_map = true;
                     setTitle("Info");
                     int commit = getSupportFragmentManager().beginTransaction()
@@ -415,27 +411,60 @@ public class CategoriiActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Confirmare");
-        builder.setMessage("Parasiti Restaurantul?");
+        builder.setMessage("Parasiti Restaurantul? Comanda Dvs. va fi pierduta");
+
         builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
                 // Do nothing but close the dialog
                 AppController.getInstance().isFabVisible = false;
                 AppController.getInstance().fabQty = 0;
-
+                //----recreez tabela de orders pentru un nou restaurant ----//
+                OrderDatabaseHandler odb = AppController.getOrdersDatabaseHelper();
+                odb.getWritableDatabase().execSQL("DROP TABLE IF EXISTS " + "orders");
+                odb.getWritableDatabase().execSQL("DROP TABLE IF EXISTS " + "offers");
+                odb.reCreateTable(odb.getReadableDatabase());
+                //TODO:Clear shared Preferences!!!!
                 finish();
+//                            dialog.dismiss();
             }
         });
-        builder.setNegativeButton("NU", new DialogInterface.OnClickListener() {
 
+        builder.setNegativeButton("NU", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Do nothing
                 dialog.dismiss();
             }
         });
+
+
+//        builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
+//
+//            public void onClick(DialogInterface dialog, int which) {
+//                // Do nothing but close the dialog
+//
+//                //TODO:Clear Preferences!!!!!
+//
+//                AppController.getInstance().isFabVisible = false;
+//                AppController.getInstance().fabQty = 0;
+//                finish();
+//            }
+//        });
+//        builder.setNegativeButton("NU", new DialogInterface.OnClickListener() {
+//
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                // Do nothing
+//                dialog.dismiss();
+//            }
+//        });
         AlertDialog alert = builder.create();
         alert.show();
+
+
+
+
     }
 
 
